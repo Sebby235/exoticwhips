@@ -10,6 +10,7 @@ import Car from './Car'
 import Order from './Order'
 import Review from './Review'
 import '../Home.css'
+import ProtectedRoute from './ProtectedRoute';
 
 
 function App() {
@@ -32,21 +33,11 @@ function App() {
           <Route path='/register'>
             <Register />
           </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
-          <Route path='/cars'>
-            <Car cars={cars} />
-          </Route>
-          <Route path='/orders'>
-            <Order />
-          </Route>
-          <Route path='/reviews'>
-            <Review />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
+          <ProtectedRoute path='/about' component={About} />
+          <ProtectedRoute path='/cars' component={() => <Car cars={cars} />} />
+          <ProtectedRoute path='/orders' component={Order} />
+          <ProtectedRoute path='/reviews' component={Review} />
+          <ProtectedRoute path='/' component={Home} />
         </Switch>
       </UserProvider>
     </Router>

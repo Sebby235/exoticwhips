@@ -1,12 +1,14 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from './UserContext'
+import { useHistory } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const { setUser } = useContext(UserContext);
+    const history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,6 +18,9 @@ function Login() {
             setUser({ email });
             setEmail('')
             setPassword('')
+            if (response.data.message === 'Login successful') {
+                history.push('/')
+            }
         } catch (error) {
             setMessage(error.response.data.message);
         }
