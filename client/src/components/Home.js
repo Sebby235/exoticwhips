@@ -18,34 +18,12 @@ function Home() {
     const handleShowRegister = () => setShowRegister(true)
 
     return (
-        <div className='page-container'>
-            
-
-            <div className='center-container'>
-                <h1 style={{ color: 'white' }}>ExoticWhips</h1>
-                <div className='button-group'>
-
+        <div className='banner'>
+            <div>
+                <h1>ExoticWhips</h1>
+                <p>Where Luxury Meets Exotic</p>
                 </div>
             </div>
-
-            <Modal show={showLogin} onHide={handleCloseLogin}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Login</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Login />
-                </Modal.Body>
-            </Modal>
-
-            <Modal show={showRegister} onHide={handleCloseRegister}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Signup</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Register />
-                </Modal.Body>
-            </Modal>
-        </div>
     )
 }
 

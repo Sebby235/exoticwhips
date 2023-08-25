@@ -10,17 +10,8 @@ import Car from './Car'
 import Order from './Order'
 import Review from './Review'
 import '../Home.css'
+import '../App.css'
 import ProtectedRoute from './ProtectedRoute';
-
-const backgroundStyle = {
-  background: "url('https://wallpapercave.com/wp/wp7034680.jpg') no-repeat center center fixed",
-  WebkitBackgroundSize: "cover",
-  MozBackgroundSize: "cover",
-  OBackgroundSize: "cover",
-  backgroundSize: "cover",
-  margin: 0,
-  padding: 0,
-};
 
 
 
