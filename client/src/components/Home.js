@@ -19,15 +19,12 @@ function Home() {
 
     return (
         <div className='page-container'>
+            
+
             <div className='center-container'>
                 <h1 style={{ color: 'white' }}>ExoticWhips</h1>
                 <div className='button-group'>
-                    <Button variant="primary" onClick={handleShowLogin}>
-                        Login
-                    </Button>
-                    <Button variant="primary" onClick={handleShowRegister}>
-                        Signup
-                    </Button>
+
                 </div>
             </div>
 

@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 function Register() {
     const [email, setEmail] = useState('')
@@ -7,11 +9,51 @@ function Register() {
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
 
+    const validateName = (name) => {
+        if (!name) return 'Name is required';
+        if (name.length <= 5) return 'Name must be 5 or more characters long'
+        return ''
+    }
+
+    const validateEmail = (email) => {
+        if (!email) return 'Email is required';
+        if (typeof email !== 'string') return 'Email must be a string';
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) return 'Email must be in a valid format';
+        return ''
+    }
+
+    const validatePassword = (password) => {
+        if (!password) return 'Password is required';
+        if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password))
+            return 'Password must include at least one letter and one number';
+        return ''
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
+
+        const emailError = validateEmail(email);
+        const passwordError = validatePassword(password)
+        const nameError = validateName(name)
+
+
+        if (emailError) {
+            setMessage(emailError)
+            return;
+        }
+
+        if (passwordError) {
+            setMessage(passwordError)
+            return;
+          }
+
+        if (nameError) {
+            setMessage(nameError)
+            return;
+        }
         try {
             const response = await axios.post('/register', {
-                email, 
+                email,
                 password,
                 name,
             });
@@ -24,24 +66,54 @@ function Register() {
         }
     }
     return (
-        <div>
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-            <br />
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <br />
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <br />
-            <button type="submit">Register</button>
-        </form>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' style={{ color: 'white' }} textAlign='center'>
+          Sign Up
+        </Header>
+        <Form size='large' onSubmit={handleSubmit}>
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <Form.Input
+              fluid
+              icon='mail'
+              iconPosition='left'
+              placeholder='E-mail address'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Button color='black' fluid size='large'>
+              Register
+            </Button>
+          </Segment>
+        </Form>
+        <Message>
+          Already have an account? <Link to='/login'>Login</Link>
+        </Message>
         {message && <p>{message}</p>}
-    </div>   
-  );
-    
+      </Grid.Column>
+    </Grid>
+    );
+
 }
 
 export default Register;
