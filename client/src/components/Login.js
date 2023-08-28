@@ -4,6 +4,7 @@ import { UserContext } from './UserContext';
 import { useHistory } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import {Link} from 'react-router-dom'
+import '../Login.css'
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ function Login() {
       setUser({ email });
       setEmail('');
       setPassword('');
-      if (response.data.message === 'Login successful') {
+      if (response.data.message === 'Logged in successfully!') {
         history.push('/');
       }
     } catch (error) {

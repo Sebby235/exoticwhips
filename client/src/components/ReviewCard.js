@@ -12,10 +12,10 @@ function ReviewCard({comment, user, review, updateReview, editReview}) {
     }
 
     return (
-        <Card border="primary" style={{ width: '18rem' }}>
+        <Card border="primary" style={{ width: '18rem', marginTop: '100px' }}>
             <Card.Header>Header</Card.Header>
             <Card.Body>
-                <Card.Title>Primary Card Title</Card.Title>
+                <Card.Title>{user}</Card.Title>
                 <Card.Text>
                     {comment}
                 </Card.Text>

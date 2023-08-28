@@ -15,7 +15,7 @@ function CarCard({cost, image, make, model, orders, reviews, year, id}) {
         }
     }
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem', marginTop: '150px' }}>
       <Card.Img variant="top" src={image} />
       <Card.Body>
         <Card.Title>{make}</Card.Title>
