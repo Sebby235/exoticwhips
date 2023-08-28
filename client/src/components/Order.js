@@ -51,9 +51,11 @@ function Order() {
         </Col>
     ))
     return (
+        <div className='banner'>
         <Container>
             <Row>{orderList} {edititngOrder}</Row>
         </Container>
+        </div>
     )
 }
 

@@ -40,6 +40,7 @@ function ReviewForm({addReview, review, updateReview}) {
         }}
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
+          backgroundColor: 'white'
         }}
         noValidate
         autoComplete="off"
@@ -53,6 +54,7 @@ function ReviewForm({addReview, review, updateReview}) {
             defaultValue="Default Value"
             value={reviewText}
             onChange={(e) => setReviewText(e.target.value)}
+            style={{ backgroundColor: 'white', color: 'black' }}
           />
         </div>
         <Button type="submit" variant="contained">Submit</Button>

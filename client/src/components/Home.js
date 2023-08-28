@@ -19,7 +19,7 @@ function Home() {
 
     return (
         <div className='banner'>
-            <div>
+            <div className='content'>
                 <h1>ExoticWhips</h1>
                 <p>Where Luxury Meets Exotic</p>
                 </div>

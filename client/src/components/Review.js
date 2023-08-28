@@ -41,7 +41,7 @@ function Review() {
     ))
 
     return (
-        <div>
+        <div className='banner'>
         <Container>
             <Row>{reviewList}</Row>
         </Container>

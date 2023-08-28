@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, useLocation } from "react-router-dom";
 import { UserProvider } from './UserContext'
 import Login from './Login'
 import Register from './Register'
@@ -18,6 +18,7 @@ import ProtectedRoute from './ProtectedRoute';
 function App() {
 
   const [cars, setCars] = useState([])
+
 
   useEffect(() => {
       fetch('http://localhost:5555/cars')

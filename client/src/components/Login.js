@@ -55,7 +55,7 @@ function Login() {
   };
 
   return (
-    <Grid className='grey-background' textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid className='banner' textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' style={{ color: 'white' }} textAlign='center'>
           Log-in to your account

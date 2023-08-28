@@ -23,9 +23,11 @@ function Car({cars}) {
        
 
     return (
+        <div className='banner'>
         <Container>
             <Row>{carsList}</Row>
         </Container>
+        </div>
     )
 }
 
