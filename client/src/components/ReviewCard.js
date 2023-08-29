@@ -33,7 +33,7 @@ function ReviewCard({comment, user, review, updateReview, editReview, handleDele
 
     return (
         <Card border="primary" style={{ width: '18rem', marginTop: '100px' }}>
-            <Card.Header>Header</Card.Header>
+            <Card.Header>Review #{id}</Card.Header>
             <Card.Body>
                 <Card.Title>{user}</Card.Title>
                 <Card.Text>

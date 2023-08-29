@@ -37,7 +37,7 @@ function Review() {
         <Col key={r.id} xs={12} sm={6} md={4} lg={3}>
             <ReviewCard
                 id={r.id}
-                user={r.user ? r.user.name : 'Anonymous'}
+                user={r.user}
                 comment={r.comment}
                 review={r}
                 updateReview={updateReview}

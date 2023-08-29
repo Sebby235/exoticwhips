@@ -39,7 +39,7 @@ function Order() {
             <OrderCard 
         key={o.id}
         id={o.id}
-        user={o.user.name}
+        user={o.user}
         cost={o.car.cost}
         image={o.car.image}
         make={o.car.make}

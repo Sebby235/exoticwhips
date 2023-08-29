@@ -31,7 +31,7 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log('called')
+        
 
         const emailError = validateEmail(email);
         const passwordError = validatePassword(password)
@@ -52,15 +52,21 @@ function Register() {
             setMessage(nameError)
             return;
         }
-        console.log('before post')
+
         try {
             const response = await axios.post('http://localhost:5555/register', {
                 email,
                 password,
                 name,
             });
-            console.log('afterpost', response)
-            setMessage(response.data.message);
+            console.log('Server Response', response.data)
+            if(response.data.message === 'User created successfully') {
+              setMessage('User created successfully')
+              console.log('message state:', message)
+            } else {
+              setMessage(response.data.message)
+            }
+      
             setEmail('');
             setPassword('');
             setName('');
