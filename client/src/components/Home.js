@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
-import Login from './Login'
-import Register from './Register'
-import NavBar from './NavBar'
 import '../Home.css'
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import {Button} from './Button'
 
 function Home() {
 
@@ -22,6 +18,13 @@ function Home() {
             <div className='content'>
                 <h1>ExoticWhips</h1>
                 <p>Where Luxury Meets Exotic</p>
+                <Button
+                className='btns'
+                buttonStyle='btn--outline'
+                buttonSize='btn-large'
+                >
+                    Get Started
+                </Button>
                 </div>
             </div>
     )

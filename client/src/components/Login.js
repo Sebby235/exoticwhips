@@ -46,7 +46,7 @@ function Login() {
       setUser({ email });
       setEmail('');
       setPassword('');
-      if (response.data.message === 'Login successful') {
+      if (response.data.message === 'Logged in successfully!') {
         history.push('/');
       }
     } catch (error) {
