@@ -10,6 +10,7 @@ import Car from './Car';
 import Order from './Order';
 import Review from './Review';
 import '../Home.css';
+import '../App.css'
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -25,7 +26,7 @@ function Content() {
 
   return (
     <UserProvider>
-      {location.pathname !== '/login' && <NavBar />}
+      {!(location.pathname === '/login' || location.pathname === '/register') && <NavBar />}
       <Switch>
         <Route path='/login'>
           <Login />

@@ -3,12 +3,32 @@ import Card from 'react-bootstrap/Card';
 import Button from '@mui/material/Button';
 import ReviewForm from './ReviewForm'
 
-function ReviewCard({comment, user, review, updateReview, editReview}) {
+function ReviewCard({comment, user, review, updateReview, editReview, handleDelete, id}) {
 
     const [editing, setEditing] = useState(false)
 
     const handleEditClick = () => {
         setEditing(true);
+    }
+
+
+    const handleDeleteClick = async () => {
+        try {
+            const response = await fetch(`http://localhost:5555/reviews/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(),
+            });
+            if (response.ok) {
+                handleDelete(id)
+            } else {
+                console.error('Delete failed')
+            }
+        } catch (error) {
+            console.log('Delete failed', error)
+        }
     }
 
     return (
@@ -28,9 +48,15 @@ function ReviewCard({comment, user, review, updateReview, editReview}) {
                         }}
                     />
                 ) : (
+                    <React.Fragment>
                     <Button variant="outlined" color="error" onClick={handleEditClick}>
                         Edit
                     </Button>
+                    <Button variant="outlined" color="secondary" onClick={handleDeleteClick}>
+                    Delete
+                  </Button>
+                  </React.Fragment>
+                  
                 )}
             </Card.Body>
         </Card>

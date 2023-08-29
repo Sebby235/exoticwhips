@@ -158,6 +158,14 @@ class ReviewsById(Resource):
         db.session.commit()
         return make_response(review.to_dict(), 200)
     
+    def delete(self, id):
+        review = Review.query.filter_by(id = id).first()
+        if review is None:
+            return jsonify({'message': 'Review not found'}), 404
+        db.session.delete(review)
+        db.session.commit()
+        return make_response({}, 202)
+    
 api.add_resource(ReviewsById, '/reviews/<int:id>')
 
 

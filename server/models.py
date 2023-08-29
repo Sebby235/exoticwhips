@@ -101,10 +101,17 @@ class Review(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     comment = db.Column(db.String)
     car_id = db.Column(db.Integer, db.ForeignKey('cars.id'))
-    users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     user = db.relationship('User', back_populates = 'reviews')
     car = db.relationship('Car', back_populates = 'reviews')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "comment": self.comment,
+            "user": self.user.to_dict() if self.user else None
+        }
 
     def __repr__(self):
         return f'<Review {self.id}: {self.comment}'

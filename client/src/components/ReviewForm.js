@@ -45,7 +45,7 @@ function ReviewForm({addReview, review, updateReview}) {
         noValidate
         autoComplete="off"
       >
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <TextField
             id="outlined-multiline-static"
             label="Review"
@@ -56,8 +56,8 @@ function ReviewForm({addReview, review, updateReview}) {
             onChange={(e) => setReviewText(e.target.value)}
             style={{ backgroundColor: 'white', color: 'black' }}
           />
+          <Button type="submit" variant="contained">Submit</Button>
         </div>
-        <Button type="submit" variant="contained">Submit</Button>
       </form>
       
     )
