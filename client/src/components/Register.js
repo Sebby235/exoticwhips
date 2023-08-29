@@ -31,6 +31,7 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log('called')
 
         const emailError = validateEmail(email);
         const passwordError = validatePassword(password)
@@ -51,19 +52,26 @@ function Register() {
             setMessage(nameError)
             return;
         }
+        console.log('before post')
         try {
-            const response = await axios.post('/register', {
+            const response = await axios.post('http://localhost:5555/register', {
                 email,
                 password,
                 name,
             });
+            console.log('afterpost', response)
             setMessage(response.data.message);
             setEmail('');
             setPassword('');
             setName('');
         } catch (error) {
-            setMessage(error.response.data.message);
-        }
+          console.log("Error in axios.post call", error);  // Debugging line
+          if (error.response && error.response.data && error.response.data.message) {
+              setMessage(error.response.data.message);
+          } else {
+              setMessage("An unexpected error occurred");
+          }
+      }
     }
     return (
         <Grid className='banner' textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
